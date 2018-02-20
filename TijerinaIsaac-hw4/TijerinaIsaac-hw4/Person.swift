@@ -8,6 +8,7 @@
 
 import Foundation
 class Person{
+    //Person attributes
     var firstName:String
     var lastName:String
     var age:Int
@@ -16,6 +17,7 @@ class Person{
     var state:String
     var zip:Int
     
+    //Initializer
     init?(firstName newFirstName:String, lastName newLastName:String, age newAge:Int, street newStreet:String, city newCity:String, state newState:String, zip newZip:Int){
         firstName = newFirstName
         lastName = newLastName

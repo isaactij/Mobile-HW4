@@ -9,10 +9,13 @@
 import UIKit
 
 class NameTableViewCell: UITableViewCell {
+    //Labels in storyboard
     @IBOutlet weak var firstNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
+    //Var to hold the person array
     public var people:[Person?] = [Person?](repeating:nil, count:9)
     
+    //Creates the datamodel held by people
     func createDataModel(){
         people[0] = Person.init(firstName: "Joe", lastName: "Johson", age: 35, street: "1 Main Street", city: "Austin", state: "TX", zip: 78128)
         people[1] = Person.init(firstName: "Sam", lastName: "Smith", age: 27, street: "2 Main Street", city: "Marble Falls", state: "TX", zip: 78228)
@@ -25,14 +28,17 @@ class NameTableViewCell: UITableViewCell {
         people[8] = Person.init(firstName: "Frank", lastName: "Farmer", age: 100, street: "9 Main Street", city: "Webster", state: "TX", zip: 78928)
     }
 
+    //Button handler for button in main storyboard
     @IBAction func buttonHandler(_ sender: Any) {
         createDataModel()
+        //Searches for the person index based on the firstNameLabel
         var row:Int = 0
         for i in 0...8 {
             if(firstNameLabel.text == people[i]!.firstName){
                 row = i
             }
         }
+        //Creates alert
         let output:String = "\(people[row]!.firstName) \(people[row]!.lastName) \(people[row]!.age)"
         let alertController:UIAlertController = UIAlertController(title: "Person", message: output, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction) in print("OK button pressed")}
@@ -43,13 +49,10 @@ class NameTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
