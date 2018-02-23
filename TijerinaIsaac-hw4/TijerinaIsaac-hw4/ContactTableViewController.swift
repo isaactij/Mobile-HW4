@@ -54,6 +54,7 @@ class ContactTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath) as! NameTableViewCell
             cell.firstNameLabel.text = people[row]!.firstName
             cell.lastNameLabel.text = people[row]!.lastName
+            cell.delegate = self
             return cell
             
         }else{
@@ -75,5 +76,27 @@ class ContactTableViewController: UITableViewController {
         }else{
             return 55
         }
+    }
+    
+}
+
+
+extension ContactTableViewController: NameTableViewCellProtocol{
+    
+    func displayAlert(firstName: String?){
+        //Searches for the person index based on the firstNameLabel
+        var row:Int = 0
+        for i in 0...8 {
+            if(firstName == people[i]!.firstName){
+                row = i
+            }
+        }
+        //Creates alert
+        let output:String = "\(people[row]!.firstName) \(people[row]!.lastName) \(people[row]!.age)"
+        let alertController:UIAlertController = UIAlertController(title: "Person", message: output, preferredStyle: UIAlertControllerStyle.alert)
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (action:UIAlertAction) in print("OK button pressed")}
+        alertController.addAction(okAction)
+        UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
     }
 }
