@@ -80,9 +80,10 @@ class ContactTableViewController: UITableViewController {
     
 }
 
-
+//Protocol
 extension ContactTableViewController: NameTableViewCellProtocol{
     
+    //Used to display the alert
     func displayAlert(firstName: String?){
         //Searches for the person index based on the firstNameLabel
         var row:Int = 0

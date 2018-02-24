@@ -21,8 +21,8 @@ class NameTableViewCell: UITableViewCell {
 
     //Button handler for button in main storyboard
     @IBAction func buttonHandler(_ sender: Any) {
+        //calls protocol in ContactTableViewControler
         delegate?.displayAlert(firstName: firstNameLabel.text)
-        
     }
     
     override func awakeFromNib() {
